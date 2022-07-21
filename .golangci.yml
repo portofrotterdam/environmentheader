@@ -29,7 +29,6 @@ linters-settings:
 linters:
   enable-all: true
   disable:
-    - varnamelen
     - goimports
     - interfacer # deprecated
     - maligned # deprecated

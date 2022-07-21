@@ -4,17 +4,21 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 
 	"github.com/portofrotterdam/environmentheader"
 )
 
 func TestAddingRequestHeader(t *testing.T) {
-	value := "FOO BAR"
+	value := "FOO"
 	header := "Test-Header"
 	envVar := "TEST_ENV"
 
-	t.Setenv(envVar, value)
+	err := os.Setenv(envVar, value)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	cfg := environmentheader.CreateConfig()
 	cfg.RequestHeaders = append(cfg.RequestHeaders, environmentheader.HeaderMapping{
@@ -46,7 +50,10 @@ func TestAddingResponseHeader(t *testing.T) {
 	header := "Test-Header"
 	envVar := "TEST_ENV"
 
-	t.Setenv(envVar, value)
+	err := os.Setenv(envVar, value)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	cfg := environmentheader.CreateConfig()
 	cfg.ResponseHeaders = append(cfg.ResponseHeaders, environmentheader.HeaderMapping{
