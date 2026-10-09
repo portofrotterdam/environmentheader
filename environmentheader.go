@@ -64,6 +64,8 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 		}
 		responseHeaders = append(responseHeaders, responseHeader)
 	}
+	fmt.Printf("environmentheader %s: middleware %s\n", pluginVersion, name)
+
 	return &environmentHeaderPlugin{
 		RequestHeaders:  requestHeaders,
 		ResponseHeaders: responseHeaders,

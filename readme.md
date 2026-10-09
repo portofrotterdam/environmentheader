@@ -34,3 +34,11 @@ http:
             env: SECRET_RESPONSE_HEADER
             optional: false
 ```
+
+## Version
+
+The version is `pluginVersion` in `version.go`. The plugin logs it when a middleware is created:
+
+```
+environmentheader v0.1.5: middleware environmentheader-foo
+```
